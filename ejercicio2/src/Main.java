@@ -8,6 +8,8 @@ public class Main {
     public static void main(String[] args) {
         Lista lista = new Lista();
         Scanner scanner = new Scanner(System.in);
+        System.out.println("\nEsta lista es de tipo 'Object', pero el main trabaja con enteros, no ingrese otro tipo de datos");
+
 
         while (true) {
             System.out.println("\nMenú:");

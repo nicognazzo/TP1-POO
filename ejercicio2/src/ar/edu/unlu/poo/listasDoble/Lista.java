@@ -9,7 +9,6 @@ public class Lista {
     //-----Metodos-----//
     // Agregar elemento al final de la lista [append].
     public void agregarFinal (Object dato){
-
         Nodo nodo = new Nodo();
         nodo.setDato(dato);
         if (fin == null){
@@ -25,9 +24,13 @@ public class Lista {
     }
 
     // Retorna true si esta vacia
-    public boolean esVacia (){ return (inicio == null); }
+    public boolean esVacia (){
+        return (inicio == null);
+    }
 
     // La longitud se modifica en cada alteracion de la lista, por lo tanto no necesita ser calculada
+    // podria ser un metodo que retorne un int y que se muestre en el main, de esa forma se podria
+    // operar con la longitud, pero para este caso no es relevante
     public void longitud(){
         System.out.println("La lista tiene una longitud de " + cantidadNodos + " nodos");
     }
@@ -39,8 +42,10 @@ public class Lista {
         }
 
         if (inicio.getDato() == dato){ //si el nodo a eliminar es el primero asigno inicio al segundo nodo
+            Nodo auxiliar = inicio;
             inicio = inicio.getSiguiente();
             inicio.setAnterior(null);
+            auxiliar = null; // para que el nodo quede nulo y no consuma memoria
             cantidadNodos --;
             return;
         }
@@ -78,7 +83,7 @@ public class Lista {
 
     public void insertarIndexado (int posicion, Object dato){
         if (posicion > cantidadNodos+1){
-            System.out.println("El indice ingresado excede al ultimo elemento de la lista (" + cantidadNodos + ("). Intente de nuevo sin exceder ese numero."));
+            System.out.println("El indice ingresado excede al ultimo elemento de la lista (" + cantidadNodos + "). Intente de nuevo sin exceder ese numero.");
             return;
         }else if(posicion == cantidadNodos+1){
             agregarFinal(dato);
