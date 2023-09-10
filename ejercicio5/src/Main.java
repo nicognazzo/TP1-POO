@@ -1,7 +1,4 @@
 import ar.edu.unlu.poo.todolist1.ListaTarea;
-import ar.edu.unlu.poo.todolist1.Tarea;
-
-import java.util.ArrayList;
 import java.util.Scanner;
 
 // Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
@@ -24,7 +21,8 @@ public class Main {
             System.out.println("4. Mostrar Todas las Tareas");
             System.out.println("5. Mostrar Tarea Específica");
             System.out.println("6. Mostrar Tareas Vencidas");
-            System.out.println("7. Salir");
+            System.out.println("7. Cambiar Descripcion de Tarea");
+            System.out.println("8. Salir");
             System.out.print("Seleccione una opción: ");
 
             int opcion = scanner.nextInt();
@@ -56,6 +54,14 @@ public class Main {
                     lista.mostrarTareasVencidas();
                     break;
                 case 7:
+                    System.out.print("Ingrese la descripción de la tarea que desea modificar: ");
+                    String descripcionOrig = scanner.nextLine();
+                    scanner.reset();
+                    System.out.print("Ingrese la nueva descripcion: ");
+                    String descripcionNueva = scanner.nextLine();
+                    lista.cambiarDescripcion(descripcionOrig, descripcionNueva);
+                    break;
+                case 8:
                     System.out.println("Saliendo del programa.");
                     scanner.close();
                     System.exit(0);

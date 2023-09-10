@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class ListaTarea {
-    private ArrayList<Tarea> lista = new ArrayList<>();
+    private ArrayList<Tarea> lista = new ArrayList<Tarea>();
 
     //-----Metodos-----\\
     public ArrayList<Tarea> getLista(){
@@ -40,21 +40,13 @@ public class ListaTarea {
 
     // Se le pasa una descripcion y en base a eso busca la tarea que coincide y la elimina
     public void eliminarTarea(String descripcion) {
-        for (Tarea tarea : lista) {
-            if (tarea.getDescripcion().equals(descripcion)) {
-                lista.remove(tarea);
-                break;
-            }
-        }
+        Tarea tarea = buscarTarea(descripcion);
+        if (tarea != null) lista.remove(tarea);
     }
 
     public void marcarTareaCompleta(String descripcion) {
-        for (Tarea tarea : lista) {
-            if (tarea.getDescripcion().equals(descripcion)) {
-                tarea.marcarComoCompleta();
-                break;
-            }
-        }
+        Tarea tarea = buscarTarea(descripcion);
+        if (tarea != null) tarea.marcarComoCompleta();
     }
 
     public void mostrarTodasLasTareas() {
@@ -66,12 +58,8 @@ public class ListaTarea {
     }
 
     public void mostrarTareaEspecifica(String descripcion) {
-        for (Tarea tarea : lista) {
-            if (tarea.getDescripcion().equals(descripcion)) {
-                tarea.mostrarTarea();
-                break;
-            }
-        }
+        Tarea tarea = buscarTarea(descripcion);
+        if (tarea != null) tarea.mostrarTarea();
     }
 
     public void mostrarTareasVencidas() {
@@ -81,5 +69,18 @@ public class ListaTarea {
                 tarea.mostrarTarea();
             }
         }
+    }
+    public Tarea buscarTarea(String descripcion) {
+        for (Tarea tarea : lista) {
+            if (tarea.getDescripcion().equals(descripcion)) {
+                return tarea;
+            }
+        }
+        System.out.println("No se encontro esa tarea en la lista!");
+        return null;
+    }
+    public void cambiarDescripcion (String descripcion, String nuevaDescripcion) {
+        Tarea tarea = buscarTarea(descripcion);
+        if (tarea != null) tarea.setDescripcion(nuevaDescripcion);
     }
 }

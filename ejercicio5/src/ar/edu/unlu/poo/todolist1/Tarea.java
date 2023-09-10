@@ -16,7 +16,7 @@ public class Tarea {
         this.fechaLimite = fechaLimite;
     }
 
-    public void modificarDescripcion(String nuevaDescripcion) {
+    public void setDescripcion(String nuevaDescripcion) {
         descripcion = nuevaDescripcion;
     }
 
